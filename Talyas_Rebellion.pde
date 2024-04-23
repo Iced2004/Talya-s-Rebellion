@@ -154,6 +154,7 @@ int score;
 
 void setup(){
   // General Settings
+  noTint();
   size(1280,720);
   rectMode(CENTER);
   imageMode(CENTER);
@@ -782,9 +783,24 @@ void draw(){
            
            textSize(30);
            fill(255,255,255);
+           if(evil1.hp > 0){
            text(evil1.name + " HP: " + evil1.hp, width/3,height-height/2.7);
+           }
+           else {
+             text(evil1.name + ": Dead", width/3,height-height/2.7);
+           }
+           if(evil2.hp > 0){
            text(evil2.name + " HP: " + evil2.hp, width/3,height-height/3.6);
+           }
+           else {
+             text(evil2.name + ": ", width/3,height-height/2.7);
+           }
+           if (evil3.hp > 0){
            text(evil3.name + " HP: " + evil3.hp, width-width/3, height-height/2.7);
+           }
+           else {
+             text(evil3.name + ": ", width/3,height-height/2.7);
+           }
            textSize(12);
            butt3.render("Player");
            butt4.render("Back");
