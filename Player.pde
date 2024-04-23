@@ -24,6 +24,7 @@ class Player{
       x = width/5;
       y = height/6;
       name = "Talya";
+      hp = startingHP+startingHP/3;
       //if(hp <= 0){
       //c = color(255,0,0);
       //}
@@ -32,6 +33,7 @@ class Player{
         x = width/3;
         y = height/3;
         name = "Billy";
+        hp = startingHP+startingHP/4;
       //  if(hp <= 0){
       //c = color(255,0,0);
       //}
@@ -40,6 +42,7 @@ class Player{
           x = width/5;
           y = height/2-25;
           name = "Daisy";
+          hp = startingHP;
       //    if(hp <= 0){
       //c = color(255,0,0);
       //}
@@ -85,30 +88,53 @@ class Player{
       if(posd == 1){
       talyaAttack.isAnimating = true;
       talyaSword.play();
+      if(isAtkBuffed == true){
+      otherEnemy.hp -= random(6,16);
+      atkBuffCount -= 1;
+          if(atkBuffCount == 0){
+            isAtkBuffed = false;
+            buffExpire = name + " is no longer buffed!";
+        }
+      }
+      else {
+        otherEnemy.hp -= random(3,8);
+      }
       }
       if(posd == 2){
         billyAttack.isAnimating = true;
         billyPunch.play();
+        if(isAtkBuffed == true){
+      otherEnemy.hp -= random(4,14);
+      atkBuffCount -= 1;
+          if(atkBuffCount == 0){
+            isAtkBuffed = false;
+            buffExpire = name + " is no longer buffed!";
+        }
+      }
+      else {
+        otherEnemy.hp -= random(2,6);
+      }
       }
       if(posd == 3){
         daisyAttack.isAnimating = true;
         daisyGun.play();
+        if(isAtkBuffed == true){
+      otherEnemy.hp -= random(7,17);
+      atkBuffCount -= 1;
+          if(atkBuffCount == 0){
+            isAtkBuffed = false;
+            buffExpire = name + " is no longer buffed!";
+        }
+      }
+      else {
+        otherEnemy.hp -= random(4,10);
+      }
       }
       if (atkBuffCount <= 0){
         isAtkBuffed = false;
       }
       
-      if(isAtkBuffed == true){
-      otherEnemy.hp -= random(6,16);
-      atkBuffCount -= 1;
-        if(atkBuffCount == 0){
-          isAtkBuffed = false;
-          buffExpire = name + " is no longer buffed!";
-      }
-      }
-      else {
-        otherEnemy.hp -= random(3,8);
-      }
+      
     }
     
     void hpUp(){
